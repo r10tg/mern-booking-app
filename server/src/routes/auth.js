@@ -20,6 +20,7 @@ router.post(
      return res.status(400).json({ message: errors.array() });
     }
     const { email, password } = req.body;
+    const isProduction = process.env.NODE_ENV === "production"
     try {
       const user = await User.findOne({ email });
       if (!user) {
@@ -34,9 +35,9 @@ router.post(
       });
       res.cookie("auth_token", token, {
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
+        secure: isProduction,
         maxAge: 24 * 60 * 60 * 1000,
-        sameSite: "None",
+        sameSite: isProduction ? "None":"Lax",
       });
       return res.status(200).send({userId:user._id});
     } catch (error) {

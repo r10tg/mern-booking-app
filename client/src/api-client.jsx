@@ -61,3 +61,14 @@ export const signOut = async()=>{
         throw new Error('Error siging out')
     }
 }
+
+export const addMyHotel = async(formData)=>{
+    const response = await axios.post(`${API_BASE_URL}/api/my-hotels`,formData,{
+        withCredentials:true
+    })
+    if(response.status>=200 && response.status<300){
+        return response
+    }
+    return  new Error('Error saving hotel')
+
+}
