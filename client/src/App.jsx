@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import {BrowserRouter,Route,Router,Routes} from 'react-router-dom'
+import {HashRouter as Router,Route,Routes} from 'react-router-dom'
 import Layout from './layouts/Layout'
 import Register from './pages/Register'
 import Signin from './pages/Signin'
@@ -13,7 +13,7 @@ function App() {
 
   return (
     <>
-    <BrowserRouter>
+    <Router>
       <Routes>
         <Route path='/' element={<Layout children={<p>Hello World</p>}/>}></Route>
         <Route path='/register' element={<Layout><Register></Register></Layout>}></Route>
@@ -22,7 +22,7 @@ function App() {
         <Route path='/add-hotel' element={<Layout><AddHotel></AddHotel></Layout>} />
         }
       </Routes>
-    </BrowserRouter>
+    </Router>
     </>
   )
 }
