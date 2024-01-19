@@ -69,6 +69,16 @@ export const addMyHotel = async(formData)=>{
     if(response.status>=200 && response.status<300){
         return response
     }
-    return  new Error('Error saving hotel')
+    throw  new Error('Error saving hotel')
 
+}
+
+export const fetchMyHotels = async()=>{
+    const response = await axios.get(`${API_BASE_URL}/api/my-hotels`,{
+        withCredentials:true
+    })
+    if(response.status>=200 && response.status<300){
+        return response
+    }
+    throw  new Error('Error Fetching hotel')
 }

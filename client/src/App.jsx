@@ -1,9 +1,10 @@
 import { useState } from 'react'
-import {HashRouter as Router,Route,Routes} from 'react-router-dom'
+import {BrowserRouter as Router,Route,Routes} from 'react-router-dom'
 import Layout from './layouts/Layout'
 import Register from './pages/Register'
 import Signin from './pages/Signin'
 import AddHotel from './pages/AddHotel'
+import MyHotels from './pages/MyHotels'
 import { useAppContext } from './contexts/AppContexts'
 
 
@@ -20,6 +21,9 @@ function App() {
         <Route path='/sign-in' element={<Layout><Signin></Signin></Layout>}></Route>
         {isLoggedIn&&
         <Route path='/add-hotel' element={<Layout><AddHotel></AddHotel></Layout>} />
+        }
+        {isLoggedIn && 
+        <Route path='/my-hotels' element={<Layout><MyHotels></MyHotels></Layout>} />
         }
       </Routes>
     </Router>
