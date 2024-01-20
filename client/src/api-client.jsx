@@ -80,5 +80,25 @@ export const fetchMyHotels = async()=>{
     if(response.status>=200 && response.status<300){
         return response
     }
+    throw  new Error('Error Fetching hotels')
+}
+
+export const fetchMyHotelById = async(hotelId)=>{
+    const response = await axios.get(`${API_BASE_URL}/api/my-hotels/${hotelId}`,{
+        withCredentials:true
+    })
+    if(response.status>=200 && response.status<300){
+        return response
+    }
     throw  new Error('Error Fetching hotel')
+}
+
+export const updateMyHotelById = async(hotelFormData)=>{
+    const response = await axios.put(`${API_BASE_URL}/api/my-hotels/${hotelFormData.get("hotelId")}`,hotelFormData,{
+        withCredentials:true
+    })
+if(response.status>=200 && response.status<300){
+    return response
+}
+throw  new Error('Error updating hotel')
 }

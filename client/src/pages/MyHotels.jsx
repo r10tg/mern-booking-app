@@ -8,7 +8,8 @@ import {BiHotel, BiMoney, BiStar} from 'react-icons/bi'
 
 const MyHotels =  () => {
    const {data:hotelData} = useQuery('fetchMyHotels',apiClient.fetchMyHotels,{
-    onError:()=>{}
+    onError:()=>{},
+    select:(response)=>response.data
    })
     
    
@@ -23,7 +24,7 @@ const MyHotels =  () => {
             <Link to='/add-hotel' className='flex bg-blue-600 text-xl text-white font-bold p-2 hover:bg-blue-500'>Add Hotel</Link>
         </span>
         <div className='grid grid-cols-1 gap-8'>
-            {hotelData.data.map((hotel)=>(
+            {hotelData.map((hotel)=>(
                 <div key={hotel._id} className='flex flex-col justify-between border border-slate-300 rounded-lg p-8 gap-5'>
                     <h2 className='text-2xl font-bold'>{hotel.name}</h2>
                     <div className='whitespace-pre-line'>{hotel.description}</div>
@@ -49,7 +50,7 @@ const MyHotels =  () => {
                         {hotel.starRating} star rating
                     </div>
                     </div>
-                    <span className='flex justify-end'> <Link className='flex bg-blue-600 text-xl text-white font-bold p-2 hover:bg-blue-500' to={`/edit-hoel/${hotel._id}`}>View Details</Link> </span>
+                    <span className='flex justify-end'> <Link className='flex bg-blue-600 text-xl text-white font-bold p-2 hover:bg-blue-500' to={`/edit-hotel/${hotel._id}`}>View Details</Link> </span>
                 </div>
             ))}
         </div>
