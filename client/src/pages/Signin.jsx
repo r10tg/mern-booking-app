@@ -68,11 +68,11 @@ const Signin = () => {
           <span className="text-red-500">{errors.password.message}</span>
         )}
       </label>
-      <span className="flex items-center justify-between">
+      <span className="flex sm:flex-row flex-col sm:items-center sm:justify-between">
         <span className="text-sm">Not Registered? <Link className="underline" to='/register'>Create an account here</Link> </span>
         <button
           type="submit"
-          className="bg-blue-600 text-white font-bold p-2 hover:bg-blue-400"
+          className="bg-blue-600 self-start mt-2 sm:mt-0 text-white font-bold p-2 hover:bg-blue-400"
         >
           Sign In
         </button>

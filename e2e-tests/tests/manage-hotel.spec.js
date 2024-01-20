@@ -62,3 +62,5 @@ test('should allow a user to add a hotel',async({page})=>{
 
          await expect(page.getByRole('link',{name:'Add Hotel'})).toBeVisible()
     })
+
+    
